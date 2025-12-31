@@ -1,0 +1,3 @@
+@echo off
+echo Starting French Learning App...
+npm run dev

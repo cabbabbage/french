@@ -1,0 +1,827 @@
+{
+  "sans": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "chercher": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "parc": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "campagne": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "historique": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "c\u00f4t\u00e9": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "bruit": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "souvenirs": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "devant": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "jardin": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "moderne": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "garage": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "charme": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "stable": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "midi": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "discuter": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "d\u00eener": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "bilingue": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "travail": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "\u00e9cole": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "ville": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "voiture": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "argent": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "eau": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "nourriture": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "temps": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "jour": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "ann\u00e9e": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "personne": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "chose": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "homme": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "femme": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "enfant": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "ami": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "id\u00e9e": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "rien": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "\u00eatre": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "avoir": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "aller": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "faire": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "pouvoir": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "vouloir": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "devoir": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "venir": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "prendre": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "mettre": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "dire": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "voir": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "savoir": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "parler": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "demander": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "se lever": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "bon": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "mauvais": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "petit": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "grand": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "nouveau": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "vieux": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "chaud": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "froid": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "facile": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "difficile": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "important": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "content": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "souvent": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "toujours": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "ici": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "aujourd'hui": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "demain": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "hier": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "vite": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "lentement": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "maintenant": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "tr\u00e8s": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "pas": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "bien": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "mal": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "encore": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "aussi": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "peut-\u00eatre": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "beaucoup": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "livre": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "chien": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "chat": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "table": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "chaise": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "porte": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "fen\u00eatre": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "manger": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "boire": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "dormir": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "lire": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "\u00e9crire": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "\u00e9couter": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "beau": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "joli": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "jeune": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "fort": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "intelligent": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "riche": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "parfois": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "jamais": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "t\u00f4t": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "tard": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "loin": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "pr\u00e8s": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "famille": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "m\u00e8re": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "p\u00e8re": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "fr\u00e8re": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "s\u0153ur": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "question": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "r\u00e9ponse": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "probl\u00e8me": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "solution": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "aide": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "aider": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "penser": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "comprendre": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "apprendre": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "entendre": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "regarder": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "trouver": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "donner": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "acheter": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "habiter": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "partir": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "arriver": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "commencer": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "finir": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "utiliser": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "avoir besoin": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "aimer": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "adorer": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "pr\u00e9f\u00e9rer": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "se sentir": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "croire": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "juste": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "faux": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "m\u00eame": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "avant": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "apr\u00e8s": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "parce que": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "l\u00e0-bas": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "avec": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "maison": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "cl\u00e9": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "appartement": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "oiseau": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "fleur": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "b\u00e2timent": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "histoire": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "rue": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "vent": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "nature": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "enfance": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "t\u00e9l\u00e9vision": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "l\u00e9gume": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "art": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "outil": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "emploi": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "repas": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "politique": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "professeur": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  },
+  "sujet": {
+    "ratio": 0.0,
+    "user_progress_sum": 0.0,
+    "target_progress_sum": 83.0
+  }
+}
