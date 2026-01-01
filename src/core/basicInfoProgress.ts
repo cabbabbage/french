@@ -98,5 +98,9 @@ export function setBasicInfoProgress(
   const normalized = sanitizeEntry(merged);
   map[key] = normalized;
   persistMap(map);
+  // Dispatch custom event to notify other components of progress update
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('progressUpdated'));
+  }
   return normalized;
 }

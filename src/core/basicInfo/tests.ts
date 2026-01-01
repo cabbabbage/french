@@ -8,9 +8,9 @@ export interface BasicInfoTestDefinition {
 
 export const BASIC_INFO_TESTS: BasicInfoTestDefinition[] = [
   {
-    id: 'intro',
-    title: 'Intro walkthrough',
-    description: 'Meet the word with a short guided recap before exercises begin.',
+    id: 'intro_card',
+    title: 'Introduction',
+    description: 'Review the word and get ready for practice.',
     requires_audio_output: false,
     requires_audio_input: false
   },

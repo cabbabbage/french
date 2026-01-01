@@ -39,6 +39,7 @@ export function buildSelectionPool(words: WordEntry[], capabilities: UserCapabil
   const remainingWords = words.filter((word) => !word.basic_info_completed);
   const blockedByAudio = remainingWords.filter((word) => !isAudioCompatible(word, capabilities));
   const eligibleWords = remainingWords.filter((word) => isAudioCompatible(word, capabilities));
+
   return { remainingWords, blockedByAudio, eligibleWords };
 }
 

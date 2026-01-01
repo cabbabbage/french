@@ -1,3 +1,8 @@
+export interface LearningPhase {
+  user_progress: number;
+  target_progress: number;
+}
+
 export interface WordEntry {
   french_word: string;
   part_of_speech: 'noun' | 'verb' | 'adjective' | 'adverb' | 'expression';
@@ -5,6 +10,7 @@ export interface WordEntry {
   pronunciation_guide?: string;
   basic_info_step: number;
   basic_info_completed: boolean;
+  learning_phases: Record<string, LearningPhase>;
   noun_data?: Record<string, unknown>;
   verb_data?: Record<string, unknown>;
   adjective_data?: Record<string, unknown>;

@@ -43,14 +43,22 @@ const renderDataRows = (data?: Record<string, unknown>) => {
 };
 
 export const POSDetails: React.FC<POSDetailsProps> = ({ word }) => {
+  if (!word) {
+    return null;
+  }
+
+  const englishMeanings = word.english_meanings && Array.isArray(word.english_meanings)
+    ? word.english_meanings.filter(Boolean).join(', ')
+    : 'Not available';
+
   return (
     <aside className="pos-details">
       <h3>Grammar spotlight</h3>
       <p className="muted-text">
-        Part of speech: <strong>{word.part_of_speech}</strong>
+        Part of speech: <strong>{word.part_of_speech || 'Unknown'}</strong>
       </p>
       <p className="muted-text">
-        Meanings: <strong>{word.english_meanings.join(', ')}</strong>
+        Meanings: <strong>{englishMeanings}</strong>
       </p>
       {word.pronunciation_guide && (
         <p className="muted-text">

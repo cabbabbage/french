@@ -1,5 +1,6 @@
 import type { WordEntry } from '@core/types';
 import { setBasicInfoProgress } from '@core/basicInfoProgress';
+import { COMPLETION_STEP } from './tests';
 
 export type AttemptOutcome = 'correct_first' | 'correct_second' | 'wrong_second';
 
@@ -7,6 +8,7 @@ export interface AttemptResult {
   updatedWord: WordEntry;
   delta: number;
   reason: string;
+  outcome: AttemptOutcome;
 }
 
 export function commitAttemptOutcome(word: WordEntry, outcome: AttemptOutcome): AttemptResult {
@@ -17,7 +19,7 @@ export function commitAttemptOutcome(word: WordEntry, outcome: AttemptOutcome): 
   if (outcome === 'correct_first') {
     nextStep += 1;
     delta = 1;
-    reason = 'Correct on the first attempt advances the ladder.';
+    reason = 'Correct.';
   } else if (outcome === 'wrong_second') {
     nextStep -= 1;
     delta = -1;
@@ -34,6 +36,7 @@ export function commitAttemptOutcome(word: WordEntry, outcome: AttemptOutcome): 
       basic_info_completed: persisted.basic_info_completed
     },
     delta,
-    reason
+    reason,
+    outcome
   };
 }

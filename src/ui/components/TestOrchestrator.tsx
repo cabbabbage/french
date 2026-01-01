@@ -2,12 +2,16 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BaseTestUI } from '@ui/components/BaseTestUI';
 import { CapabilityPanel } from '@ui/components/CapabilityPanel';
 import { CandidatePanel } from '@ui/components/CandidatePanel';
-import { HoverableTextDisplay } from '@ui/components/HoverableTextDisplay';
 import { POSDetails } from '@ui/components/POSDetails';
+import { IntroCard } from '@ui/components/tests/basicInfo/IntroCard';
 import { loadWordEntries } from '@core/dataModel';
 import { loadUserCapabilities, persistUserCapabilities } from '@core/capabilities';
 import { buildSelectionPool, getTestForWord, selectRandomWord, SelectionPool } from '@core/basicInfo/selector';
 import { commitAttemptOutcome, AttemptOutcome, AttemptResult } from '@core/basicInfo/orchestrator';
+import { basicInfoTestRegistry } from '@ui/components/tests';
+import { COMPLETION_STEP } from '@core/basicInfo/tests';
+import { setBasicInfoProgress } from '@core/basicInfoProgress';
+import { speakFrenchWord } from '@ui/components/tests/common/audioHelpers';
 import type { BasicInfoSelection } from '@core/basicInfo/selector';
 import type { WordEntry, UserCapabilities } from '@core/types';
 
@@ -35,9 +39,14 @@ const describeNoEligibleWords = (pool: SelectionPool, capabilities: UserCapabili
 export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = false }) => {
   const initialWords = useMemo(() => loadWordEntries(), []);
   const [words, setWords] = useState<WordEntry[]>(initialWords);
+
+  const refreshWords = useCallback(() => {
+    const newWords = loadWordEntries();
+    setWords(newWords);
+  }, []);
   const [selection, setSelection] = useState<BasicInfoSelection | null>(null);
   const [attemptIndex, setAttemptIndex] = useState(1);
-  const [statusMessage, setStatusMessage] = useState('Preparing the next Basic Info activity.');
+  const [statusMessage, setStatusMessage] = useState('Welcome to French Learning!');
   const [attemptFeedback, setAttemptFeedback] = useState<AttemptResult | null>(null);
   const [capabilities, setCapabilities] = useState<UserCapabilities>(() => loadUserCapabilities());
   const lastWordRef = useRef<string | null>(null);
@@ -46,12 +55,14 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
 
   const scheduleNextWord = useCallback(() => {
     const pool = buildSelectionPool(words, capabilities);
+
     if (pool.eligibleWords.length === 0) {
       setSelection(null);
       setAttemptFeedback(null);
       setStatusMessage(describeNoEligibleWords(pool, capabilities));
       return;
     }
+
     const nextWord = selectRandomWord(pool.eligibleWords, lastWordRef.current);
     if (!nextWord) {
       setSelection(null);
@@ -59,9 +70,12 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
       setStatusMessage('Unable to select a new word right now.');
       return;
     }
+
+    const test = getTestForWord(nextWord);
+
     setSelection({
       word: nextWord,
-      test: getTestForWord(nextWord)
+      test: test
     });
     setAttemptIndex(1);
     setAttemptFeedback(null);
@@ -75,6 +89,25 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
       startedRef.current = true;
     }
   }, [scheduleNextWord]);
+
+  // Listen for progress reset events (when progress is reset from ProgressDisplay)
+  useEffect(() => {
+    const handleProgressReset = () => {
+      refreshWords();
+      // Reset selection to trigger re-selection with updated word data
+      setSelection(null);
+      setAttemptFeedback(null);
+    };
+
+    window.addEventListener('progressReset', handleProgressReset);
+    return () => window.removeEventListener('progressReset', handleProgressReset);
+  }, [refreshWords]);
+
+  useEffect(() => {
+    if (startedRef.current && !selection) {
+      scheduleNextWord();
+    }
+  }, [selection, scheduleNextWord]);
 
   useEffect(() => {
     if (!selection && selectionPool.eligibleWords.length > 0) {
@@ -92,6 +125,7 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
       previous.map((word) => (word.french_word === result.updatedWord.french_word ? result.updatedWord : word))
     );
     setAttemptFeedback(result);
+    setAttemptIndex(1); // Reset attempt index for next test
     setStatusMessage(result.reason);
   }, []);
 
@@ -105,7 +139,7 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
           applyAttemptResult(commitAttemptOutcome(selection.word, 'correct_first'));
         } else {
           setAttemptIndex(2);
-          setStatusMessage('Incorrect on round one. You have one more attempt.');
+          setStatusMessage('Incorrect. You have one more attempt.');
         }
         return;
       }
@@ -118,6 +152,18 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
   const handleNextWord = useCallback(() => {
     scheduleNextWord();
   }, [scheduleNextWord]);
+
+  const handleIntroComplete = useCallback(() => {
+    if (!selection) return;
+    // Treat intro completion as a successful first attempt
+    const result = commitAttemptOutcome(selection.word, 'correct_first');
+    setWords((previous) =>
+      previous.map((word) => (word.french_word === result.updatedWord.french_word ? result.updatedWord : word))
+    );
+    // Reset lastWordRef to allow selecting the progressed word immediately
+    lastWordRef.current = null;
+    scheduleNextWord();
+  }, [selection, scheduleNextWord]);
 
   const heroWord = selection?.word.french_word ?? 'Bienvenue';
   const heroEnglish = selection?.word.english_meanings ?? [];
@@ -133,7 +179,7 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
       ]
     : [];
 
-  const renderControls = () => {
+  const renderTestContent = () => {
     if (!selection) {
       return (
         <div className="test-actions">
@@ -145,14 +191,20 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
       );
     }
     if (attemptFeedback) {
-      const badgeClass =
-        attemptFeedback.delta > 0
-          ? 'score-feedback--positive'
-          : attemptFeedback.delta < 0
-          ? 'score-feedback--negative'
-          : '';
+      const badgeClass = attemptFeedback.outcome === 'wrong_second' ? 'score-feedback--negative' : 'score-feedback--positive';
+      const word = attemptFeedback.updatedWord;
       return (
         <div className="test-actions">
+          <div className="word-info">
+            <p><strong>French:</strong> <span
+              onClick={() => speakFrenchWord(word.french_word)}
+              style={{ cursor: 'pointer', textDecoration: 'underline' }}
+            >
+              {word.french_word}
+            </span></p>
+            <p><strong>English:</strong> {word.english_meanings.filter(Boolean).join(', ')}</p>
+            <p><strong>Part of Speech:</strong> {word.part_of_speech}</p>
+          </div>
           <p className={`muted-text ${badgeClass}`}>{attemptFeedback.reason}</p>
           <button type="button" onClick={handleNextWord}>
             Next word
@@ -160,29 +212,46 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
         </div>
       );
     }
+
+    // Special case: if word is at step 0, show the intro card
+    if (selection.word.basic_info_step === 0) {
+      return <IntroCard word={selection.word} onNext={handleIntroComplete} />;
+    }
+
+    // Render the appropriate test component for the current step
+    const TestComponent = basicInfoTestRegistry[selection.test.id as keyof typeof basicInfoTestRegistry];
+    if (TestComponent) {
+      return (
+        <TestComponent
+          word={selection.word}
+          test={selection.test}
+          attemptIndex={attemptIndex}
+          onSubmit={handleAttemptSubmission}
+        />
+      );
+    }
+
+    // Fallback if test component not found
     return (
-      <div className="test-actions">
-        <button type="button" onClick={() => handleAttemptSubmission(true)}>
-          Mark correct
-        </button>
-        <button type="button" onClick={() => handleAttemptSubmission(false)}>
-          Mark incorrect
-        </button>
-        {attemptIndex > 1 && <p className="muted-text">A second attempt is available.</p>}
+      <div className="test-error">
+        <p>Error: Test component not found for {selection.test.id}</p>
       </div>
     );
   };
 
-  const wordInfo = (
-    <div className="word-info">
-      <div className="word-info__hero hero-word">
-        <p className="hero-word__french">{heroWord}</p>
-        {heroEnglishText && <p className="hero-word__english">{heroEnglishText}</p>}
-      </div>
-      <HoverableTextDisplay phrase={heroWord} word={selection?.word} />
-      {selection && <POSDetails word={selection.word} />}
-    </div>
-  );
+  const isFrenchAnswer = selection && selection.word.basic_info_step > 0 && (selection.test.id.includes('to_fr') || selection.test.id.includes('pronounce_fr'));
+
+  const wordInfo = null;
+
+  // Create selective highlightWord based on test type
+  const getHighlightWord = () => {
+    if (!selection || selection.word.basic_info_step === 0) return undefined;
+
+    return {
+      french: heroWord,
+      english: heroEnglish
+    };
+  };
 
   const testCard = (
     <BaseTestUI
@@ -192,16 +261,17 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
       attempts={attemptIndex}
       maxAttempts={MAX_ATTEMPTS}
       statusMessage={statusMessage}
-      highlightWord={selection ? { french: selection.word.french_word, english: selection.word.english_meanings } : undefined}
+      highlightWord={getHighlightWord()}
+      answerLanguage={isFrenchAnswer ? 'french' : 'english'}
+      submissionResult={attemptFeedback}
     >
-      {renderControls()}
+      {renderTestContent()}
     </BaseTestUI>
   );
 
   if (focusMode) {
     return (
       <div className="orchestrator-main orchestrator-main--focused">
-        {wordInfo}
         {testCard}
       </div>
     );
@@ -211,14 +281,12 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
     <div className="orchestrator-shell">
       <div className="orchestrator-side">
         <CapabilityPanel capabilities={capabilities} onChange={handleCapabilityChange} />
-        <CandidatePanel candidates={candidateList} />
         <div className="selection-summary">
           <p className="muted-text">Remaining words: {selectionPool.remainingWords.length}</p>
           <p className="muted-text">Audio gated: {selectionPool.blockedByAudio.length}</p>
         </div>
       </div>
       <div className="orchestrator-main">
-        {wordInfo}
         {testCard}
       </div>
     </div>
