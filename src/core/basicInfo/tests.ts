@@ -8,13 +8,6 @@ export interface BasicInfoTestDefinition {
 
 export const BASIC_INFO_TESTS: BasicInfoTestDefinition[] = [
   {
-    id: 'intro_card',
-    title: 'Introduction',
-    description: 'Review the word and get ready for practice.',
-    requires_audio_output: false,
-    requires_audio_input: false
-  },
-  {
     id: 'en_to_fr_select_mc',
     title: 'English prompt → French multiple choice',
     description: 'Select the French translation for the English prompt from a list of options.',

@@ -3,7 +3,7 @@ import { BaseTestUI } from '@ui/components/BaseTestUI';
 import { CapabilityPanel } from '@ui/components/CapabilityPanel';
 import { CandidatePanel } from '@ui/components/CandidatePanel';
 import { POSDetails } from '@ui/components/POSDetails';
-import { IntroCard } from '@ui/components/tests/basicInfo/IntroCard';
+
 import { loadWordEntries } from '@core/dataModel';
 import { loadUserCapabilities, persistUserCapabilities } from '@core/capabilities';
 import { buildSelectionPool, getTestForWord, selectRandomWord, SelectionPool } from '@core/basicInfo/selector';
@@ -153,17 +153,7 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
     scheduleNextWord();
   }, [scheduleNextWord]);
 
-  const handleIntroComplete = useCallback(() => {
-    if (!selection) return;
-    // Treat intro completion as a successful first attempt
-    const result = commitAttemptOutcome(selection.word, 'correct_first');
-    setWords((previous) =>
-      previous.map((word) => (word.french_word === result.updatedWord.french_word ? result.updatedWord : word))
-    );
-    // Reset lastWordRef to allow selecting the progressed word immediately
-    lastWordRef.current = null;
-    scheduleNextWord();
-  }, [selection, scheduleNextWord]);
+
 
   const heroWord = selection?.word.french_word ?? 'Bienvenue';
   const heroEnglish = selection?.word.english_meanings ?? [];
@@ -213,11 +203,6 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
       );
     }
 
-    // Special case: if word is at step 0, show the intro card
-    if (selection.word.basic_info_step === 0) {
-      return <IntroCard word={selection.word} onNext={handleIntroComplete} />;
-    }
-
     // Render the appropriate test component for the current step
     const TestComponent = basicInfoTestRegistry[selection.test.id as keyof typeof basicInfoTestRegistry];
     if (TestComponent) {
@@ -239,13 +224,13 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
     );
   };
 
-  const isFrenchAnswer = selection && selection.word.basic_info_step > 0 && (selection.test.id.includes('to_fr') || selection.test.id.includes('pronounce_fr'));
+  const isFrenchAnswer = selection && (selection.test.id.includes('to_fr') || selection.test.id.includes('pronounce_fr'));
 
   const wordInfo = null;
 
   // Create selective highlightWord based on test type
   const getHighlightWord = () => {
-    if (!selection || selection.word.basic_info_step === 0) return undefined;
+    if (!selection) return undefined;
 
     return {
       french: heroWord,
