@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { CapabilityPanel } from '@ui/components/CapabilityPanel';
 import { TestOrchestrator } from '@ui/components/TestOrchestrator';
+import { ProgressDisplay } from '@ui/components/ProgressDisplay';
 import { loadUserCapabilities, persistUserCapabilities } from '@core/capabilities';
-import { loadWordEntries } from '@core/dataModel';
-import type { UserCapabilities, WordEntry } from '@core/types';
+import type { UserCapabilities } from '@core/types';
 
 const instructions = [
   'Run the Basic Info ladder exclusively: words drive the test selection, not learning phases.',
@@ -25,41 +25,6 @@ const AppContent: React.FC = () => {
     persistUserCapabilities(next);
   };
 
-  const words = loadWordEntries();
-
-  const getCompletedTests = (word: WordEntry): number => {
-    return Object.values(word.learning_phases).filter(
-      (phase) => phase.user_progress >= phase.target_progress
-    ).length;
-  };
-
-  const VocabList: React.FC = () => (
-    <div className="vocab-list">
-      <h2>Vocabulary Progress</h2>
-      <ul className="vocab-items">
-        {words.map((word) => {
-          const completed = getCompletedTests(word);
-          const total = Object.keys(word.learning_phases).length;
-          const progressPercent = (completed / total) * 100;
-          return (
-            <li key={word.french_word} className="vocab-item">
-              <span className="vocab-word">{word.french_word}</span>
-              <div className="progress-bar-container">
-                <div className="progress-bar">
-                  <div
-                    className="progress-fill"
-                    style={{ width: `${progressPercent}%` }}
-                  ></div>
-                </div>
-                <span className="progress-text">{completed}/{total} tests passed</span>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-
   if (!sessionStarted) {
     return (
       <div className="app-shell">
@@ -79,7 +44,7 @@ const AppContent: React.FC = () => {
               ))}
             </ol>
           </div>
-          <VocabList />
+          <ProgressDisplay />
           <div className="instructions-panel start-panel">
             <h2>Ready to practice?</h2>
             <p className="muted-text">Click below to start a focused session built around the planner-driven tests.</p>

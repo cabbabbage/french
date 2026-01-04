@@ -16,8 +16,7 @@ interface RawWordEntry {
 
 function normalizeWord(raw: RawWordEntry): WordEntry {
   const progress = getBasicInfoProgress(raw.french_word);
-  // Default to step 1 instead of 0 to skip intro
-  const step = progress.basic_info_step || 1;
+  const step = typeof progress.basic_info_step === 'number' ? progress.basic_info_step : 0;
   return {
     french_word: raw.french_word,
     part_of_speech: raw.part_of_speech,

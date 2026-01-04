@@ -9,8 +9,6 @@ import { loadUserCapabilities, persistUserCapabilities } from '@core/capabilitie
 import { buildSelectionPool, getTestForWord, selectRandomWord, SelectionPool } from '@core/basicInfo/selector';
 import { commitAttemptOutcome, AttemptOutcome, AttemptResult } from '@core/basicInfo/orchestrator';
 import { basicInfoTestRegistry } from '@ui/components/tests';
-import { COMPLETION_STEP } from '@core/basicInfo/tests';
-import { setBasicInfoProgress } from '@core/basicInfoProgress';
 import { speakFrenchWord } from '@ui/components/tests/common/audioHelpers';
 import type { BasicInfoSelection } from '@core/basicInfo/selector';
 import type { WordEntry, UserCapabilities } from '@core/types';
