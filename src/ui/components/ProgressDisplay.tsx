@@ -93,22 +93,40 @@ export const ProgressDisplay: React.FC = () => {
   });
 
   const handleResetWord = (wordKey: string) => {
-    setBasicInfoProgress(wordKey, {
+    const normalizedProgress = setBasicInfoProgress(wordKey, {
       basic_info_step: 0,
       basic_info_completed: false
     });
+    setWords((previous) =>
+      previous.map((word) =>
+        word.french_word === wordKey
+          ? {
+              ...word,
+              basic_info_step: normalizedProgress.basic_info_step,
+              basic_info_completed: normalizedProgress.basic_info_completed
+            }
+          : word
+      )
+    );
     // Dispatch custom event to notify other components
     window.dispatchEvent(new CustomEvent('progressReset'));
   };
 
   const handleResetAll = () => {
     if (window.confirm('Are you sure you want to reset ALL progress? This cannot be undone.')) {
-      words.forEach(word => {
+      words.forEach((word) => {
         setBasicInfoProgress(word.french_word, {
           basic_info_step: 0,
           basic_info_completed: false
         });
       });
+      setWords((previous) =>
+        previous.map((word) => ({
+          ...word,
+          basic_info_step: 0,
+          basic_info_completed: false
+        }))
+      );
       // Dispatch custom event to notify other components
       window.dispatchEvent(new CustomEvent('progressReset'));
     }

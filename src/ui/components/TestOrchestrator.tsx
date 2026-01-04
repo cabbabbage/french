@@ -49,6 +49,7 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
   const [capabilities, setCapabilities] = useState<UserCapabilities>(() => loadUserCapabilities());
   const lastWordRef = useRef<string | null>(null);
   const startedRef = useRef(false);
+  const refreshPendingRef = useRef(false);
   const selectionPool = useMemo(() => buildSelectionPool(words, capabilities), [words, capabilities]);
 
   const scheduleNextWord = useCallback(() => {
@@ -91,6 +92,7 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
   // Listen for progress reset events (when progress is reset from ProgressDisplay)
   useEffect(() => {
     const handleProgressReset = () => {
+      refreshPendingRef.current = true;
       refreshWords();
       // Reset selection to trigger re-selection with updated word data
       setSelection(null);
@@ -102,6 +104,9 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
   }, [refreshWords]);
 
   useEffect(() => {
+    if (refreshPendingRef.current) {
+      return;
+    }
     if (startedRef.current && !selection) {
       scheduleNextWord();
     }
@@ -112,6 +117,16 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
       scheduleNextWord();
     }
   }, [selectionPool, selection, scheduleNextWord]);
+
+  useEffect(() => {
+    if (!refreshPendingRef.current || selection) {
+      return;
+    }
+    refreshPendingRef.current = false;
+    if (startedRef.current) {
+      scheduleNextWord();
+    }
+  }, [words, scheduleNextWord, selection]);
 
   const handleCapabilityChange = (next: UserCapabilities) => {
     setCapabilities(next);
@@ -169,9 +184,19 @@ export const TestOrchestrator: React.FC<TestOrchestratorProps> = ({ focusMode = 
 
   const renderTestContent = () => {
     if (!selection) {
+      const showInlineCapabilities = focusMode && selectionPool.blockedByAudio.length > 0;
       return (
         <div className="test-actions">
-          <p className="muted-text">Select a capability combo and re-run the selector to continue.</p>
+          <p className="muted-text">
+            {statusMessage || 'Select a capability combo and re-run the selector to continue.'}
+          </p>
+          {showInlineCapabilities && (
+            <CapabilityPanel
+              capabilities={capabilities}
+              onChange={handleCapabilityChange}
+              description="Toggle audio input/output so the selector can surface the listening or pronunciation cards that match your device."
+            />
+          )}
           <button type="button" onClick={handleNextWord}>
             Re-check words
           </button>
